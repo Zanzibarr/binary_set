@@ -1,0 +1,26 @@
+# Compiled files
+*.o
+*.exe
+*.out
+a.out
+
+# Build directories
+build/
+cmake-build-*/
+venv
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Project specific temporary files
