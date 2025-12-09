@@ -2,8 +2,6 @@
 
 A header-only C++ library providing space-efficient binary set operations using bit manipulation.  
 
-Please refer to the [CHANGELOG.md](CHANGELOG.md) for info about versions.  
-
 ## Build Status
 
 [![C++ CI](https://github.com/Zanzibarr/binary_set/actions/workflows/ci.yml/badge.svg)](https://github.com/Zanzibarr/binary_set/actions/workflows/ci.yml)
@@ -17,6 +15,20 @@ Please refer to the [CHANGELOG.md](CHANGELOG.md) for info about versions.
 - **Header-Only**: No compilation or linking required
 - **Zero Dependencies**: Uses only C++ standard library
 - **Subset Search**: Efficient tree-based structure for finding all subsets
+
+## Index
+- [Quick Start](#quick-start)
+- [Classes](#classes)
+- [Build Instructions](#how-to-build-the-project)
+- [Unit Tests](#how-to-run-tests)
+- [Benchmarks](#how-to-run-benchmarks)
+- [Installation](#installation)
+- [Limitations](#limitations)
+- [Compiler Compatibility](#compiler-compatibility)
+- [Contributing](#contributing)
+- [Development](#development)
+- [License](#license)
+- [Other](#see-also)
 
 ## Quick Start
 
@@ -179,17 +191,6 @@ query.add(1); query.add(3); query.add(5);
 auto results = searcher.find_subsets(query);  // Returns {101, 102}
 ```
 
-## Repository Organization and Structure
-
-The project follows a standard C++ project layout managed by CMake.
-
-*   **Top-Level Files:** `.clang-format`, `.gitignore`, `BENCHMARKS.md`, `binary_set.hxx` (the core library), `CHANGELOG.md`, `CMakeLists.txt` (root build script), `CONTRIBUTING.md`, `EXAMPLES.md`, `LICENSE`, `README.md`. These files cover build configuration, version control, documentation, and licensing.
-*   **Directories:**
-    *   `benchmarks/`: Contains CMake scripts and source code for performance benchmarks.
-    *   `examples/`: Holds various example programs demonstrating library usage.
-    *   `.github/workflows/`: Contains GitHub Actions workflow definitions for Continuous Integration.
-    *   `tests/`: Contains unit tests for the library's components.
-
 ## How to Build the Project
 
 The project uses CMake for its build system.
@@ -225,7 +226,7 @@ The project uses the Google Test framework for unit testing.
 ```bash
 ./build/tests/run_tests
 ```
-This command will discover and execute all tests defined in `tests/binary_set_test.cpp` and `tests/bs_searcher_test.cpp`.
+This command will discover and execute all tests defined in [tests/binary_set_test.cpp](tests/binary_set_test.cpp) and [tests/bs_searcher_test.cpp](tests/bs_searcher_test.cpp).
 
 ## How to Run Benchmarks
 
@@ -235,52 +236,19 @@ Performance benchmarks are implemented using the Google Benchmark library.
 ```bash
 ./build/benchmarks/run_benchmarks
 ```
-This executable will run all defined benchmarks in `benchmarks/main_benchmark.cpp`, which compare the performance of `binary_set` against `std::set`, `std::unordered_set`, and `std::vector<bool>` for various operations like `add`, `remove`, `contains`, and set arithmetic.
+This executable will run all defined benchmarks in [benchmarks/main_benchmark.cpp](benchmarks/main_benchmark.cpp), which compare the performance of `binary_set` against `std::set`, `std::unordered_set`, and `std::vector<bool>` for various operations like `add`, `remove`, `contains`, and set arithmetic.
 
-## Code Style and Quality
-
-*   **Code Formatting:** The project adheres to a consistent code style enforced by `.clang-format`.
-*   **Documentation:** Public APIs are documented using Doxygen-style comments.
-*   **Exception Safety:** Methods provide at least basic exception guarantees, and critical operations handle specific `std::` exceptions.
-
-## Continuous Integration (CI)
-
-The project utilizes GitHub Actions for Continuous Integration, defined in `.github/workflows/ci.yml`.
-
-**Key aspects of the CI pipeline:**
-*   **Triggers:** Automatically runs on every `push` to the `main` branch and for every `pull_request`.
-*   **Build & Test:** Configures CMake, builds the project (with code coverage enabled for GCC), and runs all unit tests.
-
-The CI ensures that all proposed changes are built correctly, pass existing tests, and maintain a high level of code coverage.
-
-## Requirements
-
-- C++17 or later
-- Standard C++ library
+For detailed performance benchmarks and memory usage analysis against standard library containers, please refer to [BENCHMARKS.md](BENCHMARKS.md).
 
 ## Installation
 
-Simply copy `binary_set.hxx` to your project directory and include it:
+Simply copy [binary_set.hxx](binary_set.hxx) to your project directory and include it:
 
 ```cpp
 #include "binary_set.hxx"
 ```
 
 No compilation or linking required.
-
-## Exception Safety
-
-All methods provide at least the basic exception guarantee. Methods marked `noexcept` never throw.
-
-### Common Exceptions
-
-- `std::invalid_argument`: Sets have incompatible capacities, or capacity is 0
-- `std::domain_error`: Operation on set with capacity 0
-- `std::out_of_range`: When an element is accessed or modified outside the valid range `[0, capacity-1]`.
-
-## Performance & Memory Considerations
-
-For detailed performance benchmarks and memory usage analysis against standard library containers, please refer to [BENCHMARKS.md](BENCHMARKS.md).
 
 ## Limitations
 
@@ -295,19 +263,23 @@ Tested with:
 - Latest Clang on Ubuntu (via GitHub Actions)
 - (Note: MSVC and older compiler versions are not explicitly tested by the current CI setup.)
 
-## License
-
-MIT License - see [LICENSE](LICENSE) for details
-
-## Author
-
-Matteo Zanella <matteozanella2@gmail.com>
-
 ## Contributing
 
 Contributions are welcome! Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for detailed instructions on reporting bugs, suggesting features, and submitting pull requests.
+
+## Development
+
+See [CHANGELOG.md](CHANGELOG.md) for all notable changes.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 ## See Also
 
 - [Examples](examples/) - More usage examples
 - [Tests](tests/) - Unit tests
+
+## Author
+
+Matteo Zanella <matteozanella2@gmail.com>
