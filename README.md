@@ -15,7 +15,7 @@ A header-only C++ library providing space-efficient binary set operations using 
 - **Header-Only**: No compilation or linking required
 - **Zero Dependencies**: Uses only C++ standard library
 - **Subset Search**: Efficient tree-based structure for finding all subsets
-
+    
 ## Index
 - [Quick Start](#quick-start)
 - [Classes](#classes)
