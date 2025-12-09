@@ -1,6 +1,7 @@
 /**
  * @file binary_set.hxx
  * @brief Compact binary set and related classes
+ * @version 1.0.0
  *
  * @author Matteo Zanella <matteozanella2@gmail.com>
  * Copyright 2025 Matteo Zanella
